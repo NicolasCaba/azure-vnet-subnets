@@ -20,9 +20,9 @@ output "vnet-data" {
 # outputs public subnets
 output "public-subnets" {
   description = "Mostrar id y nombre de las subredes publicas"
-  value = { for v, subnet in aws_subnet.subnet_public : v => {
+  value = { for v, subnet in azurerm_subnet.subnet_public : v => {
     subnet_id   = subnet.id,
-    subnet_name = subnet.tags.Name
+    subnet_name = subnet.name
     }
   }
 }
@@ -31,9 +31,9 @@ output "public-subnets" {
 # outputs private subnets
 output "private-subnets" {
   description = "Mostrar id y nombre de las subredes privadas"
-  value = { for v, subnet in aws_subnet.subnet_private : v => {
+  value = { for v, subnet in azurerm_subnet.subnet_private : v => {
     subnet_id   = subnet.id,
-    subnet_name = subnet.tags.Name
+    subnet_name = subnet.name
     }
   }
 }
